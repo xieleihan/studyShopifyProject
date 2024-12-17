@@ -1,0 +1,25 @@
+<div>
+    <div class='tw-w-full sm:tw-w-full md:tw-w-96 lg:tw-w-96 tw-min-h-full tw-flex tw-flex-col tw-justify-between tw-m-4 tw-p-4 tw-border-2 tw-border-black tw-border-solid tw-rounded-2xl'>
+        {{
+          block.settings.img
+          | image_url: width: 200
+          | image_tag: style: 'width: 100%;'
+        }}
+
+        <p class='tw-text-red-500 tw-m-0'>{{ block.settings.warning }}</p>
+        <p class='tw-font-bold tw-m-0'>{{ block.settings.title }}</p>
+        <p class='tw-text-wrap tw-text-slate-300 tw-w-full tw-m-0 tw-break-words'>
+          {{ block.settings.desc }}
+        </p>
+
+        <div class='tw-flex tw-justify-end'>
+          <button class='tw-bg-cyan-300 tw-text-white tw-w-6/12 tw-rounded-2xl tw-text-nowrap tw-py-4 tw-border-0'>
+            {{ block.settings.btnText }}
+          </button>
+        </div>
+      </div>
+</div>
+
+<script></script>
+
+<style></style>

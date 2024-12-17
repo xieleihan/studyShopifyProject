@@ -1,9 +1,11 @@
-# OS generated files #
-######################
-.DS_Store
-.DS_Store?
-._*
-.Spotlight-V100
-.Trashes
-ehthumbs.db
-Thumbs.db
+node_modules
+.vscode
+.prettierrc
+package-lock.json
+package.json
+README.md
+shopify.theme.toml
+style.css
+tailwind.config.js
+.gitignore
+.shopifyignore

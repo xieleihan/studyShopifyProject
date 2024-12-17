@@ -1,0 +1,90 @@
+{% schema %}
+{
+  "name": "Image Temp",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title"
+    },
+    {
+      "type": "text",
+      "id": "desc",
+      "label": "Description"
+    }
+  ],
+  "blocks": [
+    {
+      "name": "Card",
+      "type": "Card",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "img",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "warning",
+          "label": "Warning"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title"
+        },
+        {
+          "type": "text",
+          "id": "desc",
+          "label": "Description"
+        },
+        {
+          "type": "text",
+          "id": "btnText",
+          "label": "Button Text"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Image Temp"
+    }
+  ]
+}
+{% endschema %}
+
+<div class='tw-flex tw-flex-col tw-justify-center tw-items-center tw-p-4'>
+  <p class='tw-font-bold tw-text-4xl'>{{ section.settings.title }}</p>
+  <p>{{ section.settings.desc }}</p>
+
+  <div class='tw-w-full tw-min-h-[32rem] tw-flex md:tw-flex-row tw-flex-col tw-justify-center tw-items-stretch'>
+    {% for block in section.blocks %}
+      {% comment %} <div class='tw-w-full sm:tw-w-full md:tw-w-96 lg:tw-w-96 tw-min-h-full tw-flex tw-flex-col tw-justify-between tw-m-4 tw-p-4 tw-border-2 tw-border-black tw-border-solid tw-rounded-2xl'>
+        {{
+          block.settings.img
+          | image_url: width: 200
+          | image_tag: style: 'width: 100%;'
+        }}
+
+        <p class='tw-text-red-500 tw-m-0'>{{ block.settings.warning }}</p>
+        <p class='tw-font-bold tw-m-0'>{{ block.settings.title }}</p>
+        <p class='tw-text-wrap tw-text-slate-300 tw-w-full tw-m-0 tw-break-words'>
+          {{ block.settings.desc }}
+        </p>
+
+        <div class='tw-flex tw-justify-end'>
+          <button class='tw-bg-cyan-300 tw-text-white tw-w-6/12 tw-rounded-2xl tw-text-nowrap tw-py-4 tw-border-0'>
+            {{ block.settings.btnText }}
+          </button>
+        </div>
+      </div> {% endcomment %}
+      {% comment %} 导入卡片模块 {% endcomment %}
+      {% render 'Image-Snip', block: block %}
+    {% endfor %}
+  </div>
+</div>
+
+<script></script>
+
+<style></style>
