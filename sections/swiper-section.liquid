@@ -1,0 +1,150 @@
+{{ 'swiper-bundle.min.css' | asset_url | stylesheet_tag }}
+<script src='{{ 'swiper-bundle.min.js' | asset_url }}' defer></script>
+
+{% schema %}
+{
+  "name": "swiper-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title"
+    }
+  ],
+  "blocks": [
+    {
+      "name": "swiper-item",
+      "type": "card",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "img",
+          "label": "Context"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title"
+        },
+        {
+          "type": "text",
+          "id": "desc",
+          "label": "Description"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "swiper-section"
+    }
+  ]
+}
+{% endschema %}
+
+<div class='swiper'>
+  <div class='swiper-wrapper'>
+    {% for block in section.blocks %}
+      {% render 'swiper-snip', block:block %}
+    {% endfor %}
+  </div>
+  <!-- Add Pagination -->
+  <div class='swiper-pagination'></div>
+  <!-- Add Navigation -->
+  <div class='swiper-button-next'></div>
+  <div class='swiper-button-prev'></div>
+  <!-- Add Scrollbar -->
+  {% comment %} <div class='swiper-scrollbar'></div> {% endcomment %}
+</div>
+
+<div class='displayTitle'></div>
+<div class='displayDesc'></div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    if (typeof Swiper !== "undefined") {
+      console.log('Swiper is loaded:', Swiper);
+      const swiper = new Swiper('.swiper', {
+        direction: 'horizontal',
+        loop: true,
+        pagination: {
+          el: '.swiper-pagination',
+        },
+        navigation: {
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev',
+        },
+        scrollbar: {
+          el: '.swiper-scrollbar',
+        },
+        autoplay: {
+          delay: 2000,
+        },
+        on:{
+          init:function(){
+            var totalSlides = this.slides.length;
+            if (totalSlides >= 5) {
+              document.querySelector('.swiper-button-next').style.display = 'block';
+              document.querySelector('.swiper-button-prev').style.display = 'block';
+            } else {
+              document.querySelector('.swiper-button-next').style.display = 'none';
+              document.querySelector('.swiper-button-prev').style.display = 'none';
+            }
+          }
+        }
+      });
+    } else {
+      console.error('Swiper is not defined.');
+    }
+  });
+</script>
+
+<style>
+  .swiper {
+    width: 100dvw;
+    height: 300px;
+    position: relative;
+  }
+
+  .swiper .swiper-wrapper {
+    width: 100%;
+    height: 100%;
+  }
+
+  .swiper .swiper-slide {
+    width: 100%;
+    height: 100%;
+  }
+
+  .swiper .swiper-image {
+    width: 100%;
+    height: 100%;
+  }
+
+  .swiper .title {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100dvw;
+    height: 50px;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 996;
+    color: white;
+    display: flex;
+    align-items: center;
+    margin: 0;
+  }
+
+  .swiper .title .displayTitle {
+    font-size: 20px;
+    font-weight: bold;
+    margin: 0;
+    padding: 10px;
+  }
+
+  .swiper .title .displayDesc {
+    font-size: 14px;
+    margin: 0;
+    padding: 10px;
+  }
+</style>

@@ -219,10 +219,6 @@
 }
 
 @media (min-width: 750px) {
-  .md\:tw-w-60 {
-    width: 15rem
-  }
-
   .md\:tw-w-96 {
     width: 24rem
   }
@@ -233,10 +229,6 @@
 }
 
 @media (min-width: 1024px) {
-  .lg\:tw-w-60 {
-    width: 15rem
-  }
-
   .lg\:tw-w-96 {
     width: 24rem
   }

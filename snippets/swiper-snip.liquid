@@ -1,0 +1,11 @@
+<div class='swiper-slide'>
+  {{
+    block.settings.img
+    | image_url: width: 500
+    | image_tag: class: 'swiper-image', sizes: '100vw'
+  }}
+  <div class='title'>
+    <p class='displayTitle'>{{ block.settings.title }}</p>
+    <p class='displayDesc'>{{ block.settings.desc }}</p>
+  </div>
+</div>
